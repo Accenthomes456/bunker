@@ -7,6 +7,75 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+    }
+
+    .navbar {
+      background-color: #333;
+      overflow: hidden;
+    }
+
+    .navbar a {
+      float: left;
+      display: block;
+      color: #fff;
+      text-align: center;
+      padding: 14px 20px;
+      text-decoration: none;
+    }
+
+    .navbar a:hover, .dropdown:hover .dropbtn {
+      background-color: #575757;
+    }
+
+    /* Dropdown container */
+    .dropdown {
+      float: left;
+      overflow: hidden;
+    }
+
+    /* Dropdown button */
+    .dropbtn {
+      font-size: 16px;
+      border: none;
+      outline: none;
+      color: white;
+      padding: 14px 20px;
+      background-color: inherit;
+      font-family: inherit;
+      margin: 0;
+    }
+
+    /* Dropdown content (hidden by default) */
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #444;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+      z-index: 1;
+    }
+
+    /* Links inside the dropdown */
+    .dropdown-content a {
+      float: none;
+      color: white;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+      text-align: left;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #666;
+    }
+
+    /* Show dropdown on hover */
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
         .hero {
             background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1540959733332-eab4de7ee590?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80');
             background-size: cover;
@@ -61,7 +130,13 @@
             <div class="hidden md:flex space-x-8">
                 <a href="#home" class="hover:text-blue-300 transition">Home</a>
                 <a href="#services" class="hover:text-blue-300 transition">Services</a>
-                <a href="#fleet" class="hover:text-blue-300 transition">Our Fleet</a>
+                <div class="dropdown">
+                 <button class="dropbtn">Our Fleet▼</button>
+                 <div class="dropdown-content">
+                  <a href="market.html">Ship Purchase and Sales</a>
+                  <a href="#seo">Ship Chartering</a>
+                 </div>
+                </div>
                 <a href="#contact" class="hover:text-blue-300 transition">Contact</a>
             </div>
         </div>
@@ -123,7 +198,7 @@
                         </li>
                     </ul>
                     <a href="market.html" class="text-blue-600 font-semibold hover:text-blue-800 transition flex items-center">
-                        Learn more <i class="fas fa-arrow-right ml-2"></i>
+                        Explore Fleet<i class="fas fa-arrow-right ml-2"></i>
                     </a>
                 </div>
                 
@@ -151,7 +226,7 @@
                         </li>
                     </ul>
                     <a href="#contact" class="text-blue-600 font-semibold hover:text-blue-800 transition flex items-center">
-                        Learn more <i class="fas fa-arrow-right ml-2"></i>
+                        Explore Fleet<i class="fas fa-arrow-right ml-2"></i>
                     </a>
                 </div>
                 
