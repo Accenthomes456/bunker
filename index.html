@@ -134,7 +134,7 @@
                  <button class="dropbtn">Our Fleet▼</button>
                  <div class="dropdown-content">
                   <a href="market.html">Ship Purchase and Sales</a>
-                  <a href="#seo">Ship Chartering</a>
+                  <a href="charter.html">Ship Chartering</a>
                  </div>
                 </div>
                 <a href="#contact" class="hover:text-blue-300 transition">Contact</a>
@@ -145,7 +145,13 @@
         <div id="mobile-menu" class="hidden md:hidden bg-blue-800 px-6 py-3">
             <a href="#home" class="block py-2 hover:text-blue-300 transition">Home</a>
             <a href="#services" class="block py-2 hover:text-blue-300 transition">Services</a>
-            <a href="#fleet" class="block py-2 hover:text-blue-300 transition">Our Fleet</a>
+            <div class="dropdown">
+                 <button class="dropbtn">Our Fleet▼</button>
+                <div class="dropdown-content">
+                  <a href="market.html">Ship Purchase and Sales</a>
+                  <a href="charter.html">Ship Chartering</a>
+                </div>
+            </div>
             <a href="#contact" class="block py-2 hover:text-blue-300 transition">Contact</a>
         </div>
     </nav>
@@ -225,7 +231,7 @@
                             <span>Specialized cargo solutions</span>
                         </li>
                     </ul>
-                    <a href="#contact" class="text-blue-600 font-semibold hover:text-blue-800 transition flex items-center">
+                    <a href="charter.html" class="text-blue-600 font-semibold hover:text-blue-800 transition flex items-center">
                         Explore Fleet<i class="fas fa-arrow-right ml-2"></i>
                     </a>
                 </div>
@@ -289,10 +295,14 @@
                 </div>
             </div>
             
-            <div class="text-center mt-12">
-                <a href="#contact" class="inline-block bg-white text-blue-900 hover:bg-blue-100 font-bold py-3 px-8 rounded-full transition duration-300 transform hover:scale-105">
-                    Inquire About Availability
-                </a>
+            <div class="text-center mt-12 relative">
+              <button onclick="toggleInquiryOptions()" class="inline-block bg-white text-blue-900 hover:bg-blue-100 font-bold py-3 px-8 rounded-full transition duration-300 transform hover:scale-105">
+                Inquire About Availability
+              </button>
+              <div id="inquiry-options" class="hidden absolute left-1/2 transform -translate-x-1/2 mt-2 bg-white border border-blue-200 rounded-lg shadow-lg w-64 z-50">
+                <a href="#charter" class="block px-6 py-3 text-blue-800 hover:bg-blue-50">Charter a Ship</a>
+                <a href="#buy" class="block px-6 py-3 text-blue-800 hover:bg-blue-50">Purchase a Ship</a>
+              </div>
             </div>
         </div>
     </section>
@@ -525,6 +535,19 @@
     </button>
     
     <script>
+            function toggleInquiryOptions() {
+            const menu = document.getElementById("inquiry-options");
+            menu.classList.toggle("hidden");
+          }
+        
+          // Optional: Close dropdown if clicked outside
+          window.addEventListener("click", function(e) {
+            const button = document.querySelector("button[onclick='toggleInquiryOptions()']");
+            const dropdown = document.getElementById("inquiry-options");
+            if (!button.contains(e.target) && !dropdown.contains(e.target)) {
+              dropdown.classList.add("hidden");
+            }
+          });
         // Mobile menu toggle
         const menuBtn = document.getElementById('menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
