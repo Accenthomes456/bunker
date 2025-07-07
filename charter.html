@@ -293,7 +293,7 @@
     form.classList.toggle("hidden");
   }
   </script>
-  <div id="popupForm" style="display:none;$1">
+  <div id="popupForm" class="hidden" style="position:fixed;top:0;left:0;width:100%;height:100%;backdrop-filter:blur(6px);background-color:rgba(0,0,0,0.4);justify-content:center;align-items:center;z-index:1000;transition:all 0.3s ease;">
     <form action="https://formsubmit.co/YOUR_EMAIL" method="POST" target="_blank" style="background:white;padding:20px;border-radius:8px;max-width:400px;width:90%;position:relative;">
       <h4 id="popup-ship-name-display" style="margin-bottom:10px;color:#222;font-weight:600;"></h4>
       <button type="button" onclick="closePopupForm()" style="position:absolute;top:10px;right:15px;font-size:20px;border:none;background:none;cursor:pointer">×</button>
@@ -315,7 +315,7 @@
   <script>
     function openPopupForm(name, purpose, location, rate, size, crew) {
     document.getElementById('popup-ship-name-display').textContent = `Ship: ${name}`;
-      document.getElementById('popupForm').style.display = 'flex';
+      document.getElementById('popupForm').classList.remove('hidden');
       document.getElementById('popup-ship').value = name;
       document.getElementById('popup-purpose').value = purpose;
       document.getElementById('popup-location').value = location;
@@ -324,7 +324,7 @@
       document.getElementById('popup-crew').value = crew;
     }
     function closePopupForm() {
-      document.getElementById('popupForm').style.display = 'none';
+      document.getElementById('popupForm').classList.add('hidden');
     }
   </script>
   </body>
