@@ -309,7 +309,7 @@
   </script>
   <div id="popupForm" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;justify-content:center;align-items:center;backdrop-filter:blur(6px);background-color:rgba(0,0,0,0.4);z-index:1000;transition:opacity 0.4s ease;opacity:0;">
     <form action="https://formsubmit.co/YOUR_EMAIL" method="POST" target="_blank" style="background:white;padding:20px;border-radius:8px;width:90%;max-width:400px;position:relative;box-shadow:0 10px 30px rgba(0,0,0,0.2);">
-      <h4 id="popup-ship-name-display" style="margin-bottom:10px;color:#222;font-weight:600;"></h4>
+      <div id="popup-ship-name-display" style="background:#0047ab;color:#fff;padding:10px 15px;border-radius:6px;margin-bottom:15px;text-align:center;font-weight:bold;font-size:16px;"></div>
       <button type="button" onclick="closePopupForm()" style="position:absolute;top:10px;right:15px;font-size:20px;border:none;background:none;cursor:pointer">×</button>
       <h3 style="margin-top:0;color:#0047ab;">Charter Request</h3>
       <input type="hidden" name="_next" value="https://accenthomes456.github.io/ariieluxe/thanks.html">
@@ -334,6 +334,7 @@
       requestAnimationFrame(() => {
         form.style.opacity = '1';
       });
+      document.getElementById('popup-ship-name-display').textContent = `You are requesting: ${name}`;
       document.getElementById('popup-ship').value = name;
       document.getElementById('popup-purpose').value = purpose;
       document.getElementById('popup-location').value = location;
