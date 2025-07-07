@@ -1,0 +1,331 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Jikolat Global - Ship Chartering</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #f4f9ff, #e6f0ff);
+      color: #333;
+    }
+    header {
+      background-color: #0047ab;
+      padding: 20px;
+      color: white;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 32px;
+      letter-spacing: 1px;
+    }
+    nav {
+      background-color: #e6f0ff;
+      padding: 15px;
+      text-align: center;
+    }
+    nav a {
+      text-decoration: none;
+      color: #0047ab;
+      margin: 0 15px;
+      font-weight: bold;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+    .section-title {
+      font-size: 26px;
+      color: #0047ab;
+      margin-bottom: 20px;
+      border-left: 5px solid #0047ab;
+      padding-left: 10px;
+    }
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+      padding: 20px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      margin-bottom: 30px;
+      position: sticky;
+      top: 10px;
+      z-index: 100;
+    }
+    .filters input[type="text"],
+    .filters select {
+      padding: 10px;
+      border: 2px solid #0047ab;
+      border-radius: 8px;
+      font-size: 15px;
+      background-color: #f0f8ff;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+    .filters select:hover,
+    .filters input[type="text"]:hover {
+      background-color: #e0edff;
+    }
+    .ship-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+    .ship-card {
+      display: flex;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 10px 20px rgba(0, 71, 171, 0.15);
+      overflow: hidden;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+    .ship-card:hover {
+      transform: scale(1.02) rotateX(3deg);
+      box-shadow: 0 15px 30px rgba(0, 71, 171, 0.25);
+    }
+    .ship-card img {
+      width: 320px;
+      height: 100%;
+      object-fit: cover;
+      cursor: zoom-in;
+    }
+    .ship-content {
+      padding: 20px;
+      flex-grow: 1;
+    }
+    .ship-content h3 {
+      color: #0047ab;
+      margin-top: 0;
+      font-size: 22px;
+    }
+    .ship-content p {
+      font-size: 14px;
+      margin: 5px 0;
+    }
+    .availability {
+      display: inline-block;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      margin-right: 8px;
+    }
+    .available { background-color: green; }
+    .unavailable { background-color: red; }
+    .action-btn {
+      background-color: #0047ab;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      margin-top: 10px;
+    }
+    .action-btn:hover {
+      background-color: #0066cc;
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #e6f0ff;
+    }
+    footer p {
+      font-size: 13px;
+      color: #333;
+    }
+      input[type="text"],
+    input[type="email"],
+    input[type="tel"] {
+      width: 100%;
+      padding: 10px;
+      margin: 6px 0;
+      border: 1.5px solid #0047ab;
+      border-radius: 6px;
+      font-size: 14px;
+      box-sizing: border-box;
+    }
+    .hidden { display: none; }
+    .charter-form {
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px solid #ccc;
+    }
+</style>
+</head>
+<body>
+  <header>
+    <h1>Jikolat Global</h1>
+    <p>Ship Chartering & Marine Logistics</p>
+  </header>
+  <nav>
+    <a href="#charter">Charter Ships</a>
+    <a href="#fleet">Available Vessels</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <div class="container">
+    <section id="fleet">
+      <h2 class="section-title">Available Vessels for Charter</h2>
+      <div class="filters">
+        <input type="text" id="search-name" placeholder="Search Ship Name...">
+        <select id="filter-type">
+          <option value="">All Cargo Types</option>
+          <option value="cargo">Cargo</option>
+          <option value="tanker">Tanker</option>
+          <option value="research">Research</option>
+        </select>
+        <select id="filter-availability">
+          <option value="">All Availability</option>
+          <option value="available">Available</option>
+          <option value="unavailable">Unavailable</option>
+        </select>
+      </div>
+      <div class="ship-grid" id="shipGrid">
+        <!-- Ship cards injected here -->
+      </div>
+    </section>
+  </div>
+  <footer>
+    <p>&copy; 2025 <strong style="color:#0047ab;">Jikolat Global Ltd.</strong> | Chartering Excellence Worldwide 🌍⚓</p>
+  </footer>
+  <script>
+    const ships = [
+      {
+        name: "Oceanic Explorer X7",
+        type: "research",
+        availability: "available",
+        location: "Houston",
+        purpose: "Deep-sea Research & Mapping",
+        rate: "$15,000/day",
+        size: "78.5m",
+        crew: 15,
+        img: "https://via.placeholder.com/400x180?text=Research+Vessel"
+      },
+      {
+        name: "Atlantic Trader 4000",
+        type: "cargo",
+        availability: "unavailable",
+        location: "London",
+        purpose: "Container & Bulk Transport",
+        rate: "$12,000/day",
+        size: "89.0m",
+        crew: 22,
+        img: "https://via.placeholder.com/400x180?text=Cargo+Ship"
+      },
+      {
+        name: "Bonga Tanker T88",
+        type: "tanker",
+        availability: "available",
+        location: "Lagos",
+        purpose: "Crude Oil Transportation",
+        rate: "$18,500/day",
+        size: "102.7m",
+        crew: 18,
+        img: "https://via.placeholder.com/400x180?text=Oil+Tanker"
+      },
+      {
+        name: "Arctic Pioneer 900",
+        type: "cargo",
+        availability: "available",
+        location: "Rotterdam",
+        purpose: "Cold-chain Logistics",
+        rate: "$14,200/day",
+        size: "92.4m",
+        crew: 17,
+        img: "https://via.placeholder.com/400x180?text=Arctic+Pioneer"
+      },
+      {
+        name: "Sea Guardian 310",
+        type: "support",
+        availability: "unavailable",
+        location: "Cape Town",
+        purpose: "Patrol and Supply Support",
+        rate: "$10,000/day",
+        size: "74.3m",
+        crew: 14,
+        img: "https://via.placeholder.com/400x180?text=Sea+Guardian"
+      }
+    ];
+
+    const grid = document.getElementById("shipGrid");
+
+    function renderShips() {
+      const nameQuery = document.getElementById("search-name").value.toLowerCase();
+      const typeFilter = document.getElementById("filter-type").value;
+      const availFilter = document.getElementById("filter-availability").value;
+      grid.innerHTML = "";
+
+      ships.forEach(ship => {
+        const matchName = ship.name.toLowerCase().includes(nameQuery);
+        const matchType = !typeFilter || ship.type === typeFilter;
+        const matchAvail = !availFilter || ship.availability === availFilter;
+
+        if (matchName && matchType && matchAvail) {
+          grid.innerHTML += `
+            <div class="ship-card">
+              <img src="${ship.img}" alt="${ship.name}">
+              <div class="ship-content">
+                <h3><span class="availability ${ship.availability}"></span>${ship.name}</h3>
+                <p><strong>Purpose:</strong> ${ship.purpose}</p>
+                <p><strong>Location:</strong> ${ship.location}</p>
+                <p><strong>Charter Rate:</strong> ${ship.rate}</p>
+                <p><strong>Ship Size:</strong> ${ship.size}</p>
+                <p><strong>Crew Members:</strong> ${ship.crew}</p>
+                <button type="button" class="action-btn" onclick="openPopupForm('${ship.name}', '${ship.purpose}', '${ship.location}', '${ship.rate}', '${ship.size}', '${ship.crew}')">Request Charter</button>
+              </div>
+            </div>
+          `;
+        }
+      });
+    }
+
+    document.getElementById("search-name").addEventListener("input", renderShips);
+    document.getElementById("filter-type").addEventListener("change", renderShips);
+    document.getElementById("filter-availability").addEventListener("change", renderShips);
+
+    renderShips();
+  function toggleForm(button) {
+  const form = button.nextElementSibling;
+  form.classList.toggle("hidden");
+}
+</script>
+<div id="popupForm" class="hidden" style="position:fixed;top:0;left:0;width:100%;height:100%;backdrop-filter:blur(6px);background-color:rgba(0,0,0,0.4);display:flex;justify-content:center;align-items:center;z-index:1000;transition:all 0.3s ease;">
+  <form action="https://formsubmit.co/YOUR_EMAIL" method="POST" target="_blank" style="background:white;padding:20px;border-radius:8px;max-width:400px;width:90%;position:relative;">
+    <h4 id="popup-ship-name-display" style="margin-bottom:10px;color:#222;font-weight:600;"></h4>
+    <button type="button" onclick="closePopupForm()" style="position:absolute;top:10px;right:15px;font-size:20px;border:none;background:none;cursor:pointer">×</button>
+    <h3 style="margin-top:0;color:#0047ab;">Charter Request</h3>
+    <input type="hidden" name="_next" value="https://accenthomes456.github.io/ariieluxe/thanks.html">
+    <input type="hidden" name="Ship Name" id="popup-ship">
+    <input type="hidden" name="Purpose" id="popup-purpose">
+    <input type="hidden" name="Location" id="popup-location">
+    <input type="hidden" name="Charter Rate" id="popup-rate">
+    <input type="hidden" name="Size" id="popup-size">
+    <input type="hidden" name="Crew Members" id="popup-crew">
+    <input type="text" name="Customer Name" placeholder="Your Full Name" required>
+    <input type="email" name="Customer Email" placeholder="Your Email Address" required>
+    <input type="tel" name="Customer Phone" placeholder="Your Phone Number" required>
+    <button type="submit" class="action-btn" style="width:100%;margin-top:10px;">Submit Request</button>
+  </form>
+</div>
+
+<script>
+  function openPopupForm(name, purpose, location, rate, size, crew) {
+  document.getElementById('popup-ship-name-display').textContent = `Ship: ${name}`;
+    document.getElementById('popupForm').classList.remove('hidden');
+    document.getElementById('popup-ship').value = name;
+    document.getElementById('popup-purpose').value = purpose;
+    document.getElementById('popup-location').value = location;
+    document.getElementById('popup-rate').value = rate;
+    document.getElementById('popup-size').value = size;
+    document.getElementById('popup-crew').value = crew;
+  }
+  function closePopupForm() {
+    document.getElementById('popupForm').classList.add('hidden');
+  }
+</script>
+</body>
+</html>
