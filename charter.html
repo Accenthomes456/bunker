@@ -208,35 +208,120 @@
     </footer>
     <script>
       const ships = [
+    {
+      name: "Oceanic Explorer X7",
+      type: "research",
+      availability: "available",
+      location: "Houston",
+      purpose: "Deep-sea Research & Mapping",
+      rate: "$15,000/day",
+      size: "78.5m",
+      loadPort: "Port of Houston",
+      dischPort: "Port of Miami",
+      cargoType: "Scientific Equipment",
+      qtyToLoad: "150 Tons",
+      layCan: "2025-08-01 to 2025-08-07",
+      driftRestriction: "None",
+      flag: "USA",
+      img: "https://via.placeholder.com/400x180?text=Research+Vessel"
+    },
+    {
+      name: "Atlantic Trader 4000",
+      type: "cargo",
+      availability: "unavailable",
+      location: "London",
+      purpose: "Container & Bulk Transport",
+      rate: "$12,000/day",
+      size: "89.0m",
+      loadPort: "Port of Felixstowe",
+      dischPort: "Port of Hamburg",
+      cargoType: "General Cargo",
+      qtyToLoad: "5000 Tons",
+      layCan: "2025-09-15 to 2025-09-20",
+      driftRestriction: "Max draft 9m",
+      flag: "UK",
+      img: "https://via.placeholder.com/400x180?text=Cargo+Ship"
+    },
+    {
+      name: "Bonga Tanker T88",
+      type: "tanker",
+      availability: "available",
+      location: "Lagos",
+      purpose: "Crude Oil Transportation",
+      rate: "$18,500/day",
+      size: "102.7m",
+      loadPort: "Bonny Terminal",
+      dischPort: "Rotterdam Oil Port",
+      cargoType: "Crude Oil",
+      qtyToLoad: "7000 Tons",
+      layCan: "2025-08-10 to 2025-08-15",
+      driftRestriction: "Tidal entry required",
+      flag: "Nigeria",
+      img: "https://via.placeholder.com/400x180?text=Oil+Tanker"
+    },
+    {
+      name: "Arctic Pioneer 900",
+      type: "cargo",
+      availability: "available",
+      location: "Rotterdam",
+      purpose: "Cold-chain Logistics",
+      rate: "$14,200/day",
+      size: "92.4m",
+      loadPort: "Port of Reykjavik",
+      dischPort: "Port of Amsterdam",
+      cargoType: "Perishable Goods",
+      qtyToLoad: "3200 Tons",
+      layCan: "2025-10-01 to 2025-10-05",
+      driftRestriction: "No anchorage",
+      flag: "Netherlands",
+      img: "https://via.placeholder.com/400x180?text=Arctic+Pioneer"
+    },
+    {
+      name: "Sea Guardian 310",
+      type: "support",
+      availability: "unavailable",
+      location: "Cape Town",
+      purpose: "Patrol and Supply Support",
+      rate: "$10,000/day",
+      size: "74.3m",
+      loadPort: "Port of Durban",
+      dischPort: "Cape Town Harbor",
+      cargoType: "Marine Supplies",
+      qtyToLoad: "800 Tons",
+      layCan: "2025-11-01 to 2025-11-03",
+      driftRestriction: "Restricted to daylight operations",
+      flag: "South Africa",
+      img: "https://via.placeholder.com/400x180?text=Sea+Guardian"
+    }
+    {
+      name: "Oceanic Explorer X7",
+      type: "research",
+      availability: "available",
+      location: "Houston",
+      purpose: "Deep-sea Research & Mapping",
+      rate: "$15,000/day",
+      size: "78.5m",
+      loadPort: "Port of Houston",
+      dischPort: "Port of Miami",
+      cargoType: "Scientific Equipment",
+      qtyToLoad: "150 Tons",
+      layCan: "2025-08-01 to 2025-08-07",
+      driftRestriction: "None",
+      flag: "USA",
+      img: "https://via.placeholder.com/400x180?text=Research+Vessel"
+    },
         {
           name: "Oceanic Explorer X7",
-          type of charter: "Time / Voyage",
-          load port: "Atlantic Trader 4000",
-          Disch Port: "Atlantic Trader 4000",
-          type of cargo to load: "Atlantic Trader 4000",
-          qty to load: "Atlantic Trader 4000",
-          lay can: "Atlantic Trader 4000",
-          drift restriction: "Atlantic Trader 4000",
-          flag: "Atlantic Trader 4000",
           type: "research",
           availability: "available",
           location: "Houston",
           purpose: "Deep-sea Research & Mapping",
           rate: "$15,000/day",
           size: "78.5m",
-          crew: 15,
           img: "https://via.placeholder.com/400x180?text=Research+Vessel"
         },
         {
           name: "Atlantic Trader 4000",
-          type of charter: "Time / Voyage",
-          load port: "Atlantic Trader 4000",
-          Disch Port: "Atlantic Trader 4000",
-          type of cargo to load: "Atlantic Trader 4000",
-          qty to load: "Atlantic Trader 4000",
-          lay can: "Atlantic Trader 4000",
-          drift restriction: "Atlantic Trader 4000",
-          flag: "Atlantic Trader 4000",
           type: "cargo",
           availability: "unavailable",
           location: "London",
@@ -248,14 +333,6 @@
         },
         {
           name: "Bonga Tanker T88",
-          type of charter: "Time / Voyage",
-          load port: "Atlantic Trader 4000",
-          Disch Port: "Atlantic Trader 4000",
-          type of cargo to load: "Atlantic Trader 4000",
-          qty to load: "Atlantic Trader 4000",
-          lay can: "Atlantic Trader 4000",
-          drift restriction: "Atlantic Trader 4000",
-          flag: "Atlantic Trader 4000",
           type: "tanker",
           availability: "available",
           location: "Lagos",
@@ -267,14 +344,6 @@
         },
         {
           name: "Arctic Pioneer 900",
-          type of charter: "Time / Voyage",
-          load port: "Atlantic Trader 4000",
-          Disch Port: "Atlantic Trader 4000",
-          type of cargo to load: "Atlantic Trader 4000",
-          qty to load: "Atlantic Trader 4000",
-          lay can: "Atlantic Trader 4000",
-          drift restriction: "Atlantic Trader 4000",
-          flag: "Atlantic Trader 4000",
           type: "cargo",
           availability: "available",
           location: "Rotterdam",
@@ -286,14 +355,6 @@
         },
         {
           name: "Sea Guardian 310",
-          type of charter: "Time / Voyage",
-          load port: "Atlantic Trader 4000",
-          Disch Port: "Atlantic Trader 4000",
-          type of cargo to load: "Atlantic Trader 4000",
-          qty to load: "Atlantic Trader 4000",
-          lay can: "Atlantic Trader 4000",
-          drift restriction: "Atlantic Trader 4000",
-          flag: "Atlantic Trader 4000",
           type: "support",
           availability: "unavailable",
           location: "Cape Town",
@@ -324,20 +385,19 @@
                 <img src="${ship.img}" alt="${ship.name}">
                 <div class="ship-content">
                   <h3><span class="availability ${ship.availability}"></span>${ship.name}</h3>
-                  <p><strong>Type of Charter:</strong> ${ship.type of charter}</p>
-                  <p><strong>Load Port:</strong> ${ship.load port}</p>
-                  <p><strong>Disch Port:</strong> ${ship.Disch Port}</p>
-                  <p><strong>Type of Cargo to Load:</strong> ${ship.type of cargo to load}</p>
-                  <p><strong>Qty to Load:</strong> ${ship.qty to load}</p>
-                  <p><strong>Lay Can:</strong> ${ship.lay can}</p>
-                  <p><strong>Drift Restriction:</strong> ${ship.drift restriction}</p>
-                  <p><strong>Flag:</strong> ${ship.flag}</p>
                   <p><strong>Purpose:</strong> ${ship.purpose}</p>
                   <p><strong>Location:</strong> ${ship.location}</p>
                   <p><strong>Charter Rate:</strong> ${ship.rate}</p>
                   <p><strong>Ship Size:</strong> ${ship.size}</p>
-                  <p><strong>Crew Members:</strong> ${ship.crew}</p>
-                  <button type="button" class="action-btn" onclick="openPopupForm('${ship.name}', '${ship.type of charter}', '${ship.load port}', '${ship.Disch Port}', '${ship.type of cargo to load}', '${ship.qty to load}', '${ship.lay can}', '${ship.drift restriction}', '${ship.flag}', '${ship.purpose}', '${ship.location}', '${ship.rate}', '${ship.size}', '${ship.crew}')">Request Charter</button>
+  <p><strong>Load Port:</strong> ${ship.loadPort || "—"}</p>
+  <p><strong>Disch Port:</strong> ${ship.dischPort || "—"}</p>
+  <p><strong>Type of Cargo:</strong> ${ship.cargoType || "—"}</p>
+  <p><strong>Qty to Load:</strong> ${ship.qtyToLoad || "—"}</p>
+  <p><strong>Lay Can:</strong> ${ship.layCan || "—"}</p>
+  <p><strong>Drift Restriction:</strong> ${ship.driftRestriction || "—"}</p>
+  <p><strong>Flag:</strong> ${ship.flag || "—"}</p>
+                  
+                  <button type="button" class="action-btn" onclick="openPopupForm('${ship.name}', '${ship.purpose}', '${ship.location}', '${ship.rate}', '${ship.size}')">Request Charter</button>
                 </div>
               </div>
             `;
@@ -366,7 +426,7 @@
       <input type="hidden" name="Location" id="popup-location">
       <input type="hidden" name="Charter Rate" id="popup-rate">
       <input type="hidden" name="Size" id="popup-size">
-      <input type="hidden" name="Crew Members" id="popup-crew">
+      
       <input type="text" name="Customer Name" placeholder="Your Full Name" required>
       <input type="email" name="Customer Email" placeholder="Your Email Address" required>
       <input type="tel" name="Customer Phone" placeholder="Your Phone Number" required>
@@ -388,7 +448,7 @@
       document.getElementById('popup-location').value = location;
       document.getElementById('popup-rate').value = rate;
       document.getElementById('popup-size').value = size;
-      document.getElementById('popup-crew').value = crew;
+      
     }
     function closePopupForm() {
       const form = document.getElementById('popupForm');
