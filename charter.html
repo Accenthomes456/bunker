@@ -210,6 +210,14 @@
       const ships = [
         {
           name: "Oceanic Explorer X7",
+          type of charter: "Time / Voyage",
+          load port: "Atlantic Trader 4000",
+          Disch Port: "Atlantic Trader 4000",
+          type of cargo to load: "Atlantic Trader 4000",
+          qty to load: "Atlantic Trader 4000",
+          lay can: "Atlantic Trader 4000",
+          drift restriction: "Atlantic Trader 4000",
+          flag: "Atlantic Trader 4000",
           type: "research",
           availability: "available",
           location: "Houston",
@@ -221,6 +229,14 @@
         },
         {
           name: "Atlantic Trader 4000",
+          type of charter: "Time / Voyage",
+          load port: "Atlantic Trader 4000",
+          Disch Port: "Atlantic Trader 4000",
+          type of cargo to load: "Atlantic Trader 4000",
+          qty to load: "Atlantic Trader 4000",
+          lay can: "Atlantic Trader 4000",
+          drift restriction: "Atlantic Trader 4000",
+          flag: "Atlantic Trader 4000",
           type: "cargo",
           availability: "unavailable",
           location: "London",
@@ -232,6 +248,14 @@
         },
         {
           name: "Bonga Tanker T88",
+          type of charter: "Time / Voyage",
+          load port: "Atlantic Trader 4000",
+          Disch Port: "Atlantic Trader 4000",
+          type of cargo to load: "Atlantic Trader 4000",
+          qty to load: "Atlantic Trader 4000",
+          lay can: "Atlantic Trader 4000",
+          drift restriction: "Atlantic Trader 4000",
+          flag: "Atlantic Trader 4000",
           type: "tanker",
           availability: "available",
           location: "Lagos",
@@ -243,6 +267,14 @@
         },
         {
           name: "Arctic Pioneer 900",
+          type of charter: "Time / Voyage",
+          load port: "Atlantic Trader 4000",
+          Disch Port: "Atlantic Trader 4000",
+          type of cargo to load: "Atlantic Trader 4000",
+          qty to load: "Atlantic Trader 4000",
+          lay can: "Atlantic Trader 4000",
+          drift restriction: "Atlantic Trader 4000",
+          flag: "Atlantic Trader 4000",
           type: "cargo",
           availability: "available",
           location: "Rotterdam",
@@ -254,6 +286,14 @@
         },
         {
           name: "Sea Guardian 310",
+          type of charter: "Time / Voyage",
+          load port: "Atlantic Trader 4000",
+          Disch Port: "Atlantic Trader 4000",
+          type of cargo to load: "Atlantic Trader 4000",
+          qty to load: "Atlantic Trader 4000",
+          lay can: "Atlantic Trader 4000",
+          drift restriction: "Atlantic Trader 4000",
+          flag: "Atlantic Trader 4000",
           type: "support",
           availability: "unavailable",
           location: "Cape Town",
@@ -284,12 +324,20 @@
                 <img src="${ship.img}" alt="${ship.name}">
                 <div class="ship-content">
                   <h3><span class="availability ${ship.availability}"></span>${ship.name}</h3>
+                  <p><strong>Type of Charter:</strong> ${ship.type of charter}</p>
+                  <p><strong>Load Port:</strong> ${ship.load port}</p>
+                  <p><strong>Disch Port:</strong> ${ship.Disch Port}</p>
+                  <p><strong>Type of Cargo to Load:</strong> ${ship.type of cargo to load}</p>
+                  <p><strong>Qty to Load:</strong> ${ship.qty to load}</p>
+                  <p><strong>Lay Can:</strong> ${ship.lay can}</p>
+                  <p><strong>Drift Restriction:</strong> ${ship.drift restriction}</p>
+                  <p><strong>Flag:</strong> ${ship.flag}</p>
                   <p><strong>Purpose:</strong> ${ship.purpose}</p>
                   <p><strong>Location:</strong> ${ship.location}</p>
                   <p><strong>Charter Rate:</strong> ${ship.rate}</p>
                   <p><strong>Ship Size:</strong> ${ship.size}</p>
                   <p><strong>Crew Members:</strong> ${ship.crew}</p>
-                  <button type="button" class="action-btn" onclick="openPopupForm('${ship.name}', '${ship.purpose}', '${ship.location}', '${ship.rate}', '${ship.size}', '${ship.crew}')">Request Charter</button>
+                  <button type="button" class="action-btn" onclick="openPopupForm('${ship.name}', '${ship.type of charter}', '${ship.load port}', '${ship.Disch Port}', '${ship.type of cargo to load}', '${ship.qty to load}', '${ship.lay can}', '${ship.drift restriction}', '${ship.flag}', '${ship.purpose}', '${ship.location}', '${ship.rate}', '${ship.size}', '${ship.crew}')">Request Charter</button>
                 </div>
               </div>
             `;
