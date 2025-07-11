@@ -178,41 +178,126 @@
     </footer>
     <script>
       const ships = [
-        {
-          name: "Oceanic Explorer X7",
-          type: "research",
-          availability: "available",
-          location: "Houston",
-          purpose: "Deep-sea Research & Mapping",
-          rate: "$15,000/day",
-          size: "78.5m",
-          loadPort: "Port of Houston",
-          dischPort: "Port of Miami",
-          cargoType: "Scientific Equipment",
-          qtyToLoad: "150 Tons",
-          layCan: "2025-08-01 to 2025-08-07",
-          driftRestriction: "None",
-          flag: "USA",
-          img: "images/oceanic-explorer.jpg"
-        },
-        {
-          name: "Atlantic Trader 4000",
-          type: "cargo",
-          availability: "unavailable",
-          location: "London",
-          purpose: "Container & Bulk Transport",
-          rate: "$12,000/day",
-          size: "89.0m",
-          loadPort: "Port of Felixstowe",
-          dischPort: "Port of Hamburg",
-          cargoType: "General Cargo",
-          qtyToLoad: "5000 Tons",
-          layCan: "2025-09-15 to 2025-09-20",
-          driftRestriction: "Max draft 9m",
-          flag: "UK",
-          img: "images/atlantic-trader.jpg"
-        }
-      ];
+    {
+      name: "Oceanic Explorer X7",
+      type: "research",
+      availability: "available",
+      location: "Houston",
+      purpose: "Deep-sea Research & Mapping",
+      rate: "$15,000/day",
+      dimensions: { LOA: "160m", BOA: "32m", summerDraft: "8.5m", dwt: "40ktons" },
+      loadPort: "Port of Houston",
+      dischPort: "Port of Miami",
+      cargoType: "Scientific Equipment",
+      qtyToLoad: "150 Tons",
+      layCan: "2025-08-01 to 2025-08-07",
+      driftRestriction: "None",
+      flag: "USA",
+      img: "images/oceanic-explorer.jpg"
+    },
+    {
+      name: "Atlantic Trader 4000",
+      type: "cargo",
+      availability: "unavailable",
+      location: "London",
+      purpose: "Container & Bulk Transport",
+      rate: "$12,000/day",
+      dimensions: { LOA: "160m", BOA: "32m", summerDraft: "8.5m", dwt: "40ktons" },
+      loadPort: "Port of Felixstowe",
+      dischPort: "Port of Hamburg",
+      cargoType: "General Cargo",
+      qtyToLoad: "5000 Tons",
+      layCan: "2025-09-15 to 2025-09-20",
+      driftRestriction: "Max draft 9m",
+      flag: "UK",
+      img: "images/atlantic-trader.jpg"
+    },
+    {
+      name: "Niger Delta Carrier",
+      type: "tanker",
+      availability: "available",
+      location: "Lagos",
+      purpose: "Oil and Gas Transport",
+      rate: "$18,000/day",
+      dimensions: { LOA: "170m", BOA: "34m", summerDraft: "9.2m", dwt: "45ktons" },
+      loadPort: "Port of Lagos",
+      dischPort: "Port of Cotonou",
+      cargoType: "Crude Oil",
+      qtyToLoad: "40,000 Tons",
+      layCan: "2025-07-22 to 2025-07-30",
+      driftRestriction: "Max draft 9.5m",
+      flag: "Nigeria",
+      img: "images/niger-delta-carrier.jpg"
+    },
+    {
+      name: "Baltic Ice Breaker",
+      type: "support",
+      availability: "unavailable",
+      location: "Helsinki",
+      purpose: "Ice Breaking and Rescue Operations",
+      rate: "$16,500/day",
+      dimensions: { LOA: "155m", BOA: "30m", summerDraft: "8.0m", dwt: "38ktons" },
+      loadPort: "Port of Tallinn",
+      dischPort: "Port of St. Petersburg",
+      cargoType: "Support Equipment",
+      qtyToLoad: "2,500 Tons",
+      layCan: "2025-11-01 to 2025-11-10",
+      driftRestriction: "Ice navigation only",
+      flag: "Finland",
+      img: "images/baltic-ice-breaker.jpg"
+    },
+    {
+      name: "Red Sea Carrier",
+      type: "cargo",
+      availability: "available",
+      location: "Jeddah",
+      purpose: "Dry bulk carrier",
+      rate: "$13,200/day",
+      dimensions: { LOA: "162m", BOA: "31m", summerDraft: "8.8m", dwt: "42ktons" },
+      loadPort: "Port of Jeddah",
+      dischPort: "Port of Karachi",
+      cargoType: "Cement & Aggregates",
+      qtyToLoad: "10,000 Tons",
+      layCan: "2025-08-15 to 2025-08-22",
+      driftRestriction: "No anchorage",
+      flag: "Saudi Arabia",
+      img: "images/red-sea-carrier.jpg"
+    },
+    {
+      name: "Pacific Voyager",
+      type: "tanker",
+      availability: "available",
+      location: "Singapore",
+      purpose: "Fuel transport and distribution",
+      rate: "$19,500/day",
+      dimensions: { LOA: "175m", BOA: "35m", summerDraft: "9.5m", dwt: "48ktons" },
+      loadPort: "Port of Singapore",
+      dischPort: "Port of Manila",
+      cargoType: "Diesel & Jet A1",
+      qtyToLoad: "45,000 Tons",
+      layCan: "2025-09-01 to 2025-09-10",
+      driftRestriction: "Restricted to deepwater terminals",
+      flag: "Singapore",
+      img: "images/pacific-voyager.jpg"
+    },
+    {
+      name: "Arctic Pioneer",
+      type: "support",
+      availability: "unavailable",
+      location: "Reykjavik",
+      purpose: "Cold-weather marine support",
+      rate: "$17,800/day",
+      dimensions: { LOA: "158m", BOA: "33m", summerDraft: "8.7m", dwt: "41ktons" },
+      loadPort: "Port of Reykjavik",
+      dischPort: "Port of Nuuk",
+      cargoType: "Rescue & Logistics Supplies",
+      qtyToLoad: "3,000 Tons",
+      layCan: "2025-10-10 to 2025-10-18",
+      driftRestriction: "Requires icebreaker escort",
+      flag: "Iceland",
+      img: "images/arctic-pioneer.jpg"
+    }
+  ];
   
       const grid = document.getElementById("shipGrid");
   
@@ -225,9 +310,13 @@
               <div class="ship-content">
                 <h3><span class="availability ${ship.availability}"></span>${ship.name}</h3>
                 <p><strong>Purpose:</strong> ${ship.purpose}</p>
+  
                 <p><strong>Location:</strong> ${ship.location}</p>
                 <p><strong>Charter Rate:</strong> ${ship.rate}</p>
-                <p><strong>Size:</strong> ${ship.size}</p>
+                <p><strong>LOA:</strong> ${ship.dimensions.LOA}</p>
+                <p><strong>BOA:</strong> ${ship.dimensions.BOA}</p>
+                <p><strong>Summer Draft:</strong> ${ship.dimensions.summerDraft}</p>
+                <p><strong>DWT:</strong> ${ship.dimensions.dwt}</p>
                 <p><strong>Load Port:</strong> ${ship.loadPort}</p>
                 <p><strong>Disch Port:</strong> ${ship.dischPort}</p>
                 <p><strong>Type of Cargo:</strong> ${ship.cargoType}</p>
