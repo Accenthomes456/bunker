@@ -302,36 +302,50 @@
       const grid = document.getElementById("shipGrid");
   
       function renderShips() {
-        grid.innerHTML = "";
-        ships.forEach(ship => {
-          grid.innerHTML += `
-            <div class="ship-card">
-              <img src="${ship.img}" alt="${ship.name}">
-              <div class="ship-content">
-                <h3><span class="availability ${ship.availability}"></span>${ship.name}</h3>
-                <p><strong>Purpose:</strong> ${ship.purpose}</p>
+    const nameQuery = document.getElementById("search-name").value.toLowerCase();
+    const typeFilter = document.getElementById("filter-type").value;
+    const availFilter = document.getElementById("filter-availability").value;
+    grid.innerHTML = "";
   
-                <p><strong>Location:</strong> ${ship.location}</p>
-                <p><strong>Charter Rate:</strong> ${ship.rate}</p>
-                <p><strong>LOA:</strong> ${ship.dimensions.LOA}</p>
-                <p><strong>BOA:</strong> ${ship.dimensions.BOA}</p>
-                <p><strong>Summer Draft:</strong> ${ship.dimensions.summerDraft}</p>
-                <p><strong>DWT:</strong> ${ship.dimensions.dwt}</p>
-                <p><strong>Load Port:</strong> ${ship.loadPort}</p>
-                <p><strong>Disch Port:</strong> ${ship.dischPort}</p>
-                <p><strong>Type of Cargo:</strong> ${ship.cargoType}</p>
-                <p><strong>Qty to Load:</strong> ${ship.qtyToLoad}</p>
-                <p><strong>Lay Can:</strong> ${ship.layCan}</p>
-                <p><strong>Drift Restriction:</strong> ${ship.driftRestriction}</p>
-                <p><strong>Flag:</strong> ${ship.flag}</p>
-                <button class="action-btn">Request Charter</button>
-              </div>
+    ships.forEach(ship => {
+      const matchName = ship.name.toLowerCase().includes(nameQuery);
+      const matchType = !typeFilter || ship.type === typeFilter;
+      const matchAvail = !availFilter || ship.availability === availFilter;
+  
+      if (matchName && matchType && matchAvail) {
+        grid.innerHTML += `
+          <div class="ship-card">
+            <img src="${ship.img}" alt="${ship.name}">
+            <div class="ship-content">
+              <h3><span class="availability ${ship.availability}"></span>${ship.name}</h3>
+              <p><strong>Purpose:</strong> ${ship.purpose}</p>
+              <p><strong>Location:</strong> ${ship.location}</p>
+              <p><strong>Charter Rate:</strong> ${ship.rate}</p>
+              <p><strong>LOA:</strong> ${ship.dimensions.LOA}</p>
+              <p><strong>BOA:</strong> ${ship.dimensions.BOA}</p>
+              <p><strong>Summer Draft:</strong> ${ship.dimensions.summerDraft}</p>
+              <p><strong>DWT:</strong> ${ship.dimensions.dwt}</p>
+              <p><strong>Load Port:</strong> ${ship.loadPort}</p>
+              <p><strong>Disch Port:</strong> ${ship.dischPort}</p>
+              <p><strong>Type of Cargo:</strong> ${ship.cargoType}</p>
+              <p><strong>Qty to Load:</strong> ${ship.qtyToLoad}</p>
+              <p><strong>Lay Can:</strong> ${ship.layCan}</p>
+              <p><strong>Drift Restriction:</strong> ${ship.driftRestriction}</p>
+              <p><strong>Flag:</strong> ${ship.flag}</p>
+              <button class="action-btn">Request Charter</button>
             </div>
-          `;
-        });
+          </div>
+        `;
       }
+    });
+  }
   
-      renderShips();
+  // Event listeners for filtering
+  ['search-name', 'filter-type', 'filter-availability'].forEach(id => {
+    document.getElementById(id).addEventListener("input", renderShips);
+  });
+  
+  renderShips();
     </script>
   </body>
 </html>
