@@ -1,27 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Jikolat Global Contact Form</title>
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       background-color: #f0f8ff;
       font-family: Arial, sans-serif;
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
+      min-height: 100vh;
       margin: 0;
+      padding: 20px;
     }
 
     .form-container {
       background: #ffffff;
-      padding: 30px 40px;
+      padding: 30px 20px;
       border-radius: 12px;
       box-shadow: 0 8px 20px rgba(0, 71, 171, 0.2);
-      max-width: 600px;
       width: 100%;
+      max-width: 600px;
       text-align: center;
+      position: relative;
+      overflow: hidden;
     }
 
     .form-container img {
@@ -70,6 +78,7 @@
       font-size: 16px;
       cursor: pointer;
       transition: background-color 0.3s ease;
+      margin-top: 10px;
     }
 
     button:hover {
@@ -77,11 +86,39 @@
     }
 
     .step {
-      display: none;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+      visibility: hidden;
+      position: absolute;
+      width: 100%;
+      left: 0;
+      top: 0;
     }
 
     .step.active {
-      display: block;
+      opacity: 1;
+      transform: translateY(0);
+      visibility: visible;
+      position: relative;
+    }
+
+    @media (max-width: 480px) {
+      h2 {
+        font-size: 20px;
+      }
+
+      .form-container {
+        padding: 20px 15px;
+      }
+
+      input, textarea {
+        font-size: 13px;
+      }
+
+      button {
+        font-size: 15px;
+      }
     }
   </style>
 </head>
@@ -110,7 +147,7 @@
       <!-- Step 2 -->
       <div id="step2" class="step">
         <p style="font-weight:bold; text-align:left; margin-bottom:15px;">
-          Provide the vessel details and we will get back to you as soon as we can;
+          Provide the vessel details and we will get back to you as soon as we can:
         </p>
 
         <label>Name</label>
@@ -170,12 +207,13 @@
         <label>SPEED</label>
         <input type="text" name="SPEED">
 
-        <!-- Hidden Settings -->
+        <!-- Hidden FormSubmit Settings -->
         <input type="hidden" name="_subject" value="New Vessel Contact Submission">
         <input type="hidden" name="_captcha" value="false">
         <input type="hidden" name="_template" value="box">
 
         <button type="submit">Send Details</button>
+        <button type="button" onclick="prevStep()">Back</button>
       </div>
     </form>
   </div>
@@ -184,6 +222,13 @@
     function nextStep() {
       document.getElementById('step1').classList.remove('active');
       document.getElementById('step2').classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function prevStep() {
+      document.getElementById('step2').classList.remove('active');
+      document.getElementById('step1').classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   </script>
 
