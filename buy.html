@@ -19,7 +19,7 @@
       padding: 30px 40px;
       border-radius: 12px;
       box-shadow: 0 8px 20px rgba(0, 71, 171, 0.2);
-      max-width: 450px;
+      max-width: 600px;
       width: 100%;
       text-align: center;
     }
@@ -75,6 +75,14 @@
     button:hover {
       background-color: #0066cc;
     }
+
+    .step {
+      display: none;
+    }
+
+    .step.active {
+      display: block;
+    }
   </style>
 </head>
 <body>
@@ -82,26 +90,102 @@
   <div class="form-container">
     <img src="footerlogo.png" alt="Jikolat Global Logo">
     <h2>Jikolat Global Contact Form</h2>
-    
-    <form action="https://formsubmit.co/your@email.com" method="POST">
 
-      <label for="name">Full Name</label>
-      <input type="text" id="name" name="name" required>
+    <form id="multiStepForm" action="https://formsubmit.co/your@email.com" method="POST">
+      
+      <!-- Step 1 -->
+      <div id="step1" class="step active">
+        <label for="name">Full Name</label>
+        <input type="text" name="Full Name" required>
 
-      <label for="email">Email Address</label>
-      <input type="email" id="email" name="email" required>
+        <label for="email">Email Address</label>
+        <input type="email" name="Email" required>
 
-      <label for="message">Message</label>
-      <textarea id="message" name="message" rows="5" required></textarea>
+        <label for="message">Message</label>
+        <textarea name="Message" rows="5" required></textarea>
 
-      <!-- Hidden Settings -->
-      <input type="hidden" name="_subject" value="New Jikolat Global Submission">
-      <input type="hidden" name="_captcha" value="false">
-      <input type="hidden" name="_template" value="box">
+        <button type="button" onclick="nextStep()">Next</button>
+      </div>
 
-      <button type="submit">Send Message</button>
+      <!-- Step 2 -->
+      <div id="step2" class="step">
+        <p style="font-weight:bold; text-align:left; margin-bottom:15px;">
+          Provide the vessel details and we will get back to you as soon as we can;
+        </p>
+
+        <label>Name</label>
+        <input type="text" name="Vessel Name">
+
+        <label>Type</label>
+        <input type="text" name="Type">
+
+        <label>BUILT, Year/Yard</label>
+        <input type="text" name="BUILT_Year_Yard">
+
+        <label>FLAG</label>
+        <input type="text" name="FLAG">
+
+        <label>CLASS</label>
+        <input type="text" name="CLASS">
+
+        <label>NOTATIONS</label>
+        <input type="text" name="NOTATIONS">
+
+        <label>Current Operational Area</label>
+        <input type="text" name="Current_Operational_Area">
+
+        <label>NEXT SS</label>
+        <input type="text" name="NEXT_SS">
+
+        <label>GRT/NET</label>
+        <input type="text" name="GRT_NET">
+
+        <label>DWT</label>
+        <input type="text" name="DWT">
+
+        <label>L/B/D</label>
+        <input type="text" name="LBD">
+
+        <label>DECK AREA</label>
+        <input type="text" name="DECK_AREA">
+
+        <label>TOTAL CARGO CAPACITY</label>
+        <input type="text" name="TOTAL_CARGO_CAPACITY">
+
+        <label>M/E</label>
+        <input type="text" name="ME">
+
+        <label>A/G</label>
+        <input type="text" name="AG">
+
+        <label>E/G</label>
+        <input type="text" name="EG">
+
+        <label>BOW/STERN THRUSTER</label>
+        <input type="text" name="BOW_STERN_THRUSTER">
+
+        <label>BOLLARD PULL</label>
+        <input type="text" name="BOLLARD_PULL" value="142T">
+
+        <label>SPEED</label>
+        <input type="text" name="SPEED">
+
+        <!-- Hidden Settings -->
+        <input type="hidden" name="_subject" value="New Vessel Contact Submission">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_template" value="box">
+
+        <button type="submit">Send Details</button>
+      </div>
     </form>
   </div>
+
+  <script>
+    function nextStep() {
+      document.getElementById('step1').classList.remove('active');
+      document.getElementById('step2').classList.add('active');
+    }
+  </script>
 
 </body>
 </html>
