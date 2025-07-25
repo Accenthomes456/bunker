@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Ship Sales & Purchase</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    :root {
+      --primary-color: #005f99;
+      --hover-color: #007acc;
+      --text-light: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #e6f0fa;
+      color: #333;
+      animation: fadeIn 0.8s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .header {
+      background-color: var(--primary-color);
+      color: var(--text-light);
+      display: flex;
+      align-items: center;
+      padding: 15px 20px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+
+    .logo {
+      height: 50px;
+      margin-right: 15px;
+    }
+
+    .title {
+      font-size: 22px;
+      font-weight: bold;
+    }
+
+    .tabs {
+      display: flex;
+      justify-content: center;
+      background-color: #dbeeff;
+      padding: 20px;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .tab {
+      background-color: var(--primary-color);
+      color: var(--text-light);
+      padding: 14px 25px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 16px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .tab:hover {
+      background-color: var(--hover-color);
+      transform: translateY(-3px);
+    }
+
+    @media (max-width: 600px) {
+      .title {
+        font-size: 18px;
+      }
+
+      .tab {
+        padding: 12px 20px;
+        font-size: 14px;
+      }
+
+      .tabs {
+        padding: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <img src="logo.png" alt="Logo" class="logo">
+    <div class="title">Ship Sales & Purchase</div>
+  </div>
+
+  <div class="tabs">
+    <a href="ship-sales.html" class="tab">Ship Sales</a>
+    <a href="buy.html" class="tab">Ship Purchase</a>
+  </div>
+
+</body>
+</html>
