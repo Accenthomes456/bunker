@@ -18,13 +18,16 @@
       padding: 0;
     }
 
-    body {
+    html, body {
+      height: 100%;
       font-family: 'Segoe UI', sans-serif;
       background-color: var(--bg);
       color: var(--text);
+    }
+
+    body {
       display: flex;
       flex-direction: column;
-      min-height: 100vh;
     }
 
     header {
@@ -53,11 +56,12 @@
 
     .container {
       display: flex;
-      flex-direction: column;
+      flex-direction: column; /* Ensures vertical stacking */
       padding: 40px 20px;
-      max-width: 1000px;
-      margin: auto;
+      max-width: 800px;
+      margin: 0 auto;
       gap: 30px;
+      flex-grow: 1;
     }
 
     .tab-box {
@@ -66,6 +70,7 @@
       border-radius: 12px;
       box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
+      width: 100%;
     }
 
     .tab-box:hover {
@@ -100,10 +105,9 @@
     }
 
     footer {
-      margin-top: auto;
-      padding: 20px;
-      text-align: center;
       background-color: #eaf4ff;
+      text-align: center;
+      padding: 20px;
       border-top: 1px solid #d0e6ff;
     }
 
@@ -138,7 +142,7 @@
 <body>
 
   <header>
-    <img src="footerlogo.png" alt="Logo" class="logo">
+    <img src="logo.png" alt="Logo" class="logo">
     <div class="header-title">Ship Sales & Purchase</div>
   </header>
 
