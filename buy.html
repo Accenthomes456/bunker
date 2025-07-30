@@ -128,85 +128,126 @@
     <img src="footerlogo.png" alt="Jikolat Global Logo">
     <h2>Jikolat Global Contact Form</h2>
 
-    <form id="multiStepForm" action="https://formsubmit.co/your@email.com" method="POST">
-      
-      <!-- Step 1 -->
-      <div id="step1" class="step active">
-        <label for="name">Full Name</label>
-        <input type="text" name="Full Name" required>
+ <form id="multiStepForm" action="https://formsubmit.co/your@email.com" method="POST">
+  <!-- Step 1 -->
+  <div id="step1" class="step active">
+    <label for="name">Full Name</label>
+    <input type="text" name="Full Name" required>
 
-        <label for="email">Email Address</label>
-        <input type="email" name="Email" required>
-        
-        <label for="address">Home Address </label>
-        <input type="text" name="address">
+    <label for="email">Email Address</label>
+    <input type="email" name="Email" required>
 
-        <label for="phone">Phone Number </label>
-        <input type="text" name="phone">
+    <label for="address">Home Address </label>
+    <input type="text" name="Address">
 
-        <label for="message">Message</label>
-        <textarea name="Message" rows="5" required></textarea>
+    <label for="phone">Phone Number </label>
+    <input type="text" name="Phone">
 
-        <button type="button" onclick="nextStep()">Next</button>
-      </div>
+    <label for="message">Message</label>
+    <textarea name="Message" rows="5" required></textarea>
 
-      <!-- Step 2 -->
-      <div id="step2" class="step">
-        <p style="font-weight:bold; text-align:left; margin-bottom:15px;">
-          In order to assist you professionally in the choice of your desired vessel,<br> You are required to kindly fill the form below and return ASAP:
-        </p>
+    <label for="shipType">Select Type of Ship</label>
+    <select name="Ship Type" id="shipType" onchange="showShipForm()" required>
+      <option value="">-- Select One --</option>
+      <option value="cargo">Cargo Vessel</option>
+      <option value="tanker">Tankers Vessel</option>
+      <option value="supply">Supply Vessel</option>
+      <option value="offshore">Offshore Vessel</option>
+    </select>
 
-        <label> Buyers Name</label>
-        <input type="text" name="Vessel Name">
-
-        <label>Type of Ship</label>
-        <input type="text" name="Type">
-
-        <label> Vessel Age</label>
-        <input type="text" name="min" type="text" name="max">
-
-
-        <label>Estimated DWT</label>
-        <input type="text" name="DWT">
-
-        <label>Estimated Budget</label>
-        <input type="text" name="EB">
-
-        <label>TOTAL CARGO CAPACITY</label>
-        <input type="text" name="TOTAL_CARGO_CAPACITY">
-
-        <label>Draft Restriction</label>
-        <input type="text" name="Draft">
-
-        <label>Quatity Of Cargos At The Required Draft</label>
-        <input type="text" name="EST_Cargo_CAPACITY">
-
-
-        <!-- ✅ Hidden Settings -->
-        <input type="hidden" name="_subject" value="New Vessel Contact Submission">
-        <input type="hidden" name="_captcha" value="false">
-        <input type="hidden" name="_template" value="box">
-        <input type="hidden" name="_next" value="https://yourdomain.com/thank-you.html">
-
-        <button type="submit">Send Details</button>
-        <button type="button" onclick="prevStep()">Back</button>
-      </div>
-    </form>
+    <button type="button" onclick="nextStep()">Next</button>
   </div>
 
-  <script>
-    function nextStep() {
-      document.getElementById('step1').classList.remove('active');
-      document.getElementById('step2').classList.add('active');
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
+  <!-- Step 2: Vessel Forms -->
+  <div id="step2" class="step">
+    <div id="cargoForm" class="vessel-form">
+      <h3 style="text-align:left;">Cargo Vessel Form</h3>
+      <label>Buyer's Name</label>
+      <input type="text" name="Cargo_Buyers_Name">
+      <label>Vessel Age</label>
+      <input type="text" name="Cargo_Vessel_Age">
+      <label>Estimated DWT</label>
+      <input type="text" name="Cargo_DWT">
+      <label>Estimated Budget</label>
+      <input type="text" name="Cargo_Budget">
+    </div>
 
-    function prevStep() {
-      document.getElementById('step2').classList.remove('active');
-      document.getElementById('step1').classList.add('active');
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+    <div id="tankerForm" class="vessel-form" style="display:none;">
+      <h3 style="text-align:left;">Tanker Vessel Form</h3>
+      <label>Buyer's Name</label>
+      <input type="text" name="Tanker_Buyers_Name">
+      <label>Tank Capacity</label>
+      <input type="text" name="Tank_Capacity">
+      <label>Required Class</label>
+      <input type="text" name="Tank_Class">
+      <label>Budget</label>
+      <input type="text" name="Tank_Budget">
+    </div>
+
+    <div id="supplyForm" class="vessel-form" style="display:none;">
+      <h3 style="text-align:left;">Supply Vessel Form</h3>
+      <label>Buyer's Name</label>
+      <input type="text" name="Supply_Buyers_Name">
+      <label>Deck Space</label>
+      <input type="text" name="Deck_Space">
+      <label>Crew Capacity</label>
+      <input type="text" name="Crew_Capacity">
+      <label>Budget</label>
+      <input type="text" name="Supply_Budget">
+    </div>
+
+    <div id="offshoreForm" class="vessel-form" style="display:none;">
+      <h3 style="text-align:left;">Offshore Vessel Form</h3>
+      <label>Buyer's Name</label>
+      <input type="text" name="Offshore_Buyers_Name">
+      <label>DP Class</label>
+      <input type="text" name="DP_Class">
+      <label>Accommodation</label>
+      <input type="text" name="Accommodation">
+      <label>Budget</label>
+      <input type="text" name="Offshore_Budget">
+    </div>
+
+    <!-- Hidden Inputs -->
+    <input type="hidden" name="_subject" value="New Vessel Contact Submission">
+    <input type="hidden" name="_captcha" value="false">
+    <input type="hidden" name="_template" value="box">
+    <input type="hidden" name="_next" value="https://yourdomain.com/thank-you.html">
+
+    <button type="submit">Send Details</button>
+    <button type="button" onclick="prevStep()">Back</button>
+  </div>
+</form>
+
+ <script>
+  function nextStep() {
+    const selectedType = document.getElementById('shipType').value;
+    if (!selectedType) {
+      alert("Please select a ship type.");
+      return;
     }
-  </script>
+    document.getElementById('step1').classList.remove('active');
+    document.getElementById('step2').classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function prevStep() {
+    document.getElementById('step2').classList.remove('active');
+    document.getElementById('step1').classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function showShipForm() {
+    const shipType = document.getElementById('shipType').value;
+    const forms = ['cargoForm', 'tankerForm', 'supplyForm', 'offshoreForm'];
+    forms.forEach(form => document.getElementById(form).style.display = 'none');
+
+    if (shipType === 'cargo') document.getElementById('cargoForm').style.display = 'block';
+    if (shipType === 'tanker') document.getElementById('tankerForm').style.display = 'block';
+    if (shipType === 'supply') document.getElementById('supplyForm').style.display = 'block';
+    if (shipType === 'offshore') document.getElementById('offshoreForm').style.display = 'block';
+  }
+ </script>
 
 </body>
 </html>
